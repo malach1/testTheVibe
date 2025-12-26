@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var isShowingNameDialog = false
     @State private var userName = ""
-    @State private var welcomeMessage = "Hello, world!"
+    @State private var welcomeMessage = ""
 
     var body: some View {
         VStack {
