@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isShowingNameDialog = false
+    @State private var userName = ""
+    @State private var welcomeMessage = "Hello, world!"
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Welcome vibes!")
+            Text(welcomeMessage)
+            Button("Enter Your Name") {
+                isShowingNameDialog = true
+            }
         }
-        .padding()
+        .alert("What is your name Viber?", isPresented: $isShowingNameDialog) {
+            TextField("Name", text: $userName)
+            Button("Submit") {
+                welcomeMessage = "Welcome \(userName), enjoy the vibes."
+                userName = ""
+            }
+            Button("Cancel", role: .cancel) { }
+        }
     }
 }
 
